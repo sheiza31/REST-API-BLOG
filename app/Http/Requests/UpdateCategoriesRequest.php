@@ -14,7 +14,7 @@ class UpdateCategoriesRequest extends FormRequest
         return [
             'name' => 'sometimes|string',
             'description' => 'sometimes|string',
-            'slug' => 'sometimes|string',
+            'slug' => 'sometimes|string|max:255|unique:categories',
             'parent_id'=>'sometimes|nullable|exists:categories,id',
         ];
     }
@@ -24,6 +24,7 @@ class UpdateCategoriesRequest extends FormRequest
            'name.required' => 'Name is required',
            'description.required' => 'Description is required',
            'slug.required' => 'Slug is required',
+           'parent_id.exists' => 'Parent category does not exist',
        ];
     }
 }

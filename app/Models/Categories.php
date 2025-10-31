@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use app\Models\Posts;
+use app\Models\Categories;
 class Categories extends Model
 {
     protected $table = 'categories';

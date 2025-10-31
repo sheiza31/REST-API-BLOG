@@ -24,7 +24,7 @@ class StoreCategoriesRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'slug' => 'required',
+            'slug' => 'string|max:255|unique:categories',
             'parent_id'=>'nullable|exists:categories,id',
         ];
     }
@@ -33,7 +33,7 @@ class StoreCategoriesRequest extends FormRequest
        return [
            'name.required' => 'Name is required',
            'description.required' => 'Description is required',
-           'slug.required' => 'Slug is required',
+           'parent_id.exists' => 'Parent category does not exist',
        ];
     }
 }
