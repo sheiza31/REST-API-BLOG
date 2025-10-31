@@ -11,7 +11,7 @@ class UpdateTagsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class UpdateTagsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'sometimes|string|max:225',
+            'slug'=>'sometimes|string|max:225',
+        ];
+    }
+
+    public function messages() : array {
+        return [
+            'name.required'=>'this field must be required',
+            'slug.string'=>'this field must be string'
         ];
     }
 }
